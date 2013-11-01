@@ -1,0 +1,20 @@
+{% extends "posts/posts_index.html" %}
+
+{% block window_title %}
+Your post was successful!
+{% endblock window_title %}
+
+{% block posts_content %}
+
+{% if post.verified %}
+
+	Your post was successful and can be viewed at {{ post_url }}
+	
+{% else %}
+
+	Your post was successful, please verify your post by clicking the verification link that has been sent to you email: {{ post.creator }}
+	
+
+{% endif %}
+
+{% endblock posts_content %}

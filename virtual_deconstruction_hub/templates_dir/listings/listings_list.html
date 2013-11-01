@@ -1,0 +1,51 @@
+{% extends "listings/listings_index.html" %}
+
+{% block create_link %}
+<input type="button" onclick="window.location.href= '/new/listing';" value="Create New Listing" />
+{% endblock create_link %}
+
+{% block listings_content %}
+	<div id="listings_index" class="body">
+{% if listings %}
+
+    {% for listing in listings %}
+        <p>{{listing.created|date:"M d"}} - <a href="{{listing.url}}"> {{ listing.title }} </a> - {{ listing.price }} ({{ listing.city }}) {{ listing.category }} - {% ifequal listing.for_sale "sell" %}Item For Sale{% else %}Item Wanted{% endifequal %}</p>
+    {% endfor %}
+
+{% else %}
+	<br>
+    <p><h2> No listings are available at this time.</h2></p>
+    <br>
+    
+{% endif %}
+	</div>
+	
+<div id="page_links_bottom" class="pagination">
+    <span class="step-links">
+        {% ifnotequal listings.number 1 %}
+            <a href="?page=1">First</a>
+        {% endifnotequal %}
+    
+        {% if listings.has_previous %}
+            <a style="margin: 0 10px 0 10px" href="?page={{ listings.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ listings.number }} of {{ listings.paginator.num_pages }}
+        </span>
+        {% if listings.has_next %}
+            <a style="margin-left:10px" href="?page={{ listings.next_page_number }}">Next</a>
+        {% endif %}
+        
+        {% ifnotequal listings.number listings.paginator.num_pages %}
+            <a style="margin-left:10px" href="?page={{ listings.paginator.num_pages }}">Last</a>
+        {% endifnotequal %} 
+    </span>
+</div>
+
+{% endblock listings_content %}
+
+
+
+
+
+

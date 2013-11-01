@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block window_title %}
+About
+{% endblock window_title %}
+ 
+
+{% block nav_about %}
+class="active"
+{% endblock nav_about %}
+
+{% block base_content %}
+
+
+{% block stats_content %}
+
+
+<div id = "statistic_text_links">
+
+<div id = "listedmost" class = "itemsinlist" style="margin-top:18px" onclick="listedmost()">
+<label>Successful Transaction by Category</label></div>
+<div id = "highestsale" class = "itemsinlist" onclick="highestsale()">
+<label>For Sale Listings by Category</label></div>
+<div id = "boughtmost" class = "itemsinlist" onclick="boughtmost()">
+<label>Wanted Listings by Category</label></div>
+<div id = "averagetransactioneach" class = "itemsinlist" onclick="averagetransactioneach()">
+<label>Average Transaction Amount by Category</label></div>
+<div id = "averagetransactionamount" class = "itemsinlist" onclick="averagetransactionamount()">
+<label>Average Transaction Amount by Listing Type</label></div>
+<div id = "transactiontime" class = "itemsinlist" onclick="transactiontime()">
+<label>Average Time to Successful Transaction</label></div>
+<div id = "ratesucess" class = "itemsinlist" style="margin-bottom:18px" onclick="ratesucess()">
+<label>Transaction Success Rate</label></div>
+</div>
+
+  <div id= 'surveycategoryrank'>
+   <span class="survey_category_rank">
+      {% load chart_tags %}
+      {% chart %}
+         ?chs=400x400
+         &cht=p3
+	&chco=FF0000|FF5F00|FF9C00|FFC900|FFF100|BAF300|4DDE00|00A383|086FA1|1533AD|4512AE|5E0DAC|8F04A8|BE008A|D8005F|A68600|FFAE73|36BBCE
+         &chd={{ category_survey_values }}
+         &chdl={{ labels }}
+
+      {% endchart %}
+   </span>
+   </div>
+   <div id = "buyercategoryrank">
+   <span class="buyer_category_rank">
+      {% load chart_tags %}
+      {% chart %}
+         ?chs=400x400
+                 &cht=p3
+                 &chd={{ category_buyer_values }}
+                 &chdl={{ labels }}
+		&chco=FF0000|FF5F00|FF9C00|FFC900|FFF100|BAF300|4DDE00|00A383|086FA1|1533AD|4512AE|5E0DAC|8F04A8|BE008A|D8005F|A68600|FFAE73|36BBCE
+      {% endchart %}
+   </span>
+	</div>
+	<div id = "sellercategoryrank">
+   <span class="seller_category_rank">
+      {% load chart_tags %}
+      {% chart %}
+         ?chs=400x400
+                 &cht=p3
+                 &chd={{ category_seller_values }}
+                 &chdl={{ labels }}
+		&chco=FF0000|FF5F00|FF9C00|FFC900|FFF100|BAF300|4DDE00|00A383|086FA1|1533AD|4512AE|5E0DAC|8F04A8|BE008A|D8005F|A68600|FFAE73|36BBCE
+      {% endchart %}
+   </span>
+     </div>
+     <div id = "categorytransactionamount" >
+   <span class="amount">
+   	{% load chart_tags %}
+      {% chart %}
+       
+	?chxl=1:|dollar(%24)
+   	&chxp=2,0,
+     	 &chxt=y, y
+     	 &chxr=0,5,100
+		&chbh=a,6	
+      &chds=0,{{ category_amount_max }}
+  		&chs=400x400
+   		&cht=bvs
+   		&chco=FF0000|FF5F00|FF9C00|FFC900|FFF100|BAF300|4DDE00|00A383|086FA1|1533AD|4512AE|5E0DAC|8F04A8|BE008A|D8005F|A68600|FFAE73|36BBCE
+   		&chd={{ category_amount_values }}
+   		&chdl={{ labels }}
+
+      {% endchart %}
+   </span>
+ </div>
+
+<div id="amountsellerbuyer">
+	<span class="amountsellerbuyer">
+   	{% load chart_tags %}
+      {% chart %}
+   		?chxl=1:|dollar(%24)
+   	&chxp=2,0,
+     	 &chxt=y, y
+     	 &chxr=0,5,100
+		&chbh=a,6	
+  		&chs=400x400
+   		&cht=bvg
+      &chco=04B431,2E9AFE,FFFF00
+  		&chds= 0,{{ successful_transaction_amount }}
+  		&chts=676767,10.5
+  		&chg=-1,0
+      &chd=t:{{ buyer_transaction_amount }}|{{ seller_transaction_amount}}|{{successful_transaction_amount}}
+      &chdl=Buyers|Sellers|Total
+      {% endchart %}
+   </span>
+ 
+ </div>
+<div id="averagetransactiontime">
+<h1>Average Transaction Time:<br/></h1><center><h1> {{ average_transaction_time }} secs</h1><center>
+</div>
+
+<div id="successrate">
+  <span class="successrate">
+    {% load chart_tags %}
+      {% chart %}
+	?chxl=1:|Count
+   	&chxp=1,0
+      ?chxr=0,0,{{number_listings}}
+      &chxt=y, y
+      &chbh=a,6
+      &chds=0,{{ number_listings }}
+      &chs=400x400
+      &cht=bvg
+      &chco=7AEE3C,04B431,A9E2F3, 2E9AFE,F4FA58,FFFF00
+      &chd=t:{{number_buyer_surveys}}|{{number_buyer_listings}}|{{number_seller_surveys}}|{{number_seller_listings}}|{{number_surveys}}|{{number_listings}}
+      &chdl=Succ.+Buyer+Listing|Buyer+Listing|Succ.+Seller+Listing|Seller+Listings|Succ.+Total+Listing|All+Listings
+   
+      {% endchart %}
+  </span>
+</div>
+
+<script type="text/javascript" >
+$("div.itemsinlist").find("label").css("cursor", "pointer");
+</script>
+
+{% endblock stats_content %}
+
+{% endblock base_content %}

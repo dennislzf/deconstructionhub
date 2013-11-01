@@ -1,0 +1,56 @@
+{% extends "posts/posts_index.html" %}
+
+
+
+{% block create_link %}
+{% if loggedin == None %}{%else%}<input type="button" onclick="window.location.href= '/posts/new/{{ post_type }}';" value="Create a new {{post_type_title}}" />{% endif %}
+{% endblock create_link %}
+
+{% block posts_content %}
+
+{% for post in posts %}
+<div id="featured_blog" class="body">
+	<article>
+		{% if post.photo_set.all %}
+		<div id="featured_blog_figure">
+			<img src="{{MEDIA_URL}}{{post.photo_set.all.0.get_url}}" alt="Virtual Deconstruction Hub" />
+		</div>
+		{% endif %}
+
+		<hgroup>
+            <p class="date"><i>{{ post.last_modified }}</i></p>
+			<h3><pre><a href="/posts/{{post.type}}/{{ post.get_url }}">{{ post.title|truncatechars:35 }}</a></pre></h3>
+		</hgroup>
+		<p><pre>{{ post.text_content|truncatechars:450 }}</pre></p>
+	</article>
+</div>
+<hr style="width:100%" > 
+
+{% endfor %}
+
+
+<div id="page_links_bottom" class="pagination">
+    <span class="step-links">
+    	{% ifnotequal posts.number 1 %}
+            <a href="?page=1">First</a>
+        {% endifnotequal %}
+    	
+        {% if posts.has_previous %}
+            <a style="margin:0 10px 0 10px;" href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>        
+
+        {% if posts.has_next %}
+            <a style="margin-left:10px" href="?page={{ posts.next_page_number }}">Next</a>
+        {% endif %}
+        
+        {% ifnotequal posts.number posts.paginator.num_pages %}
+            <a style="margin-left:10px" href="?page={{ posts.paginator.num_pages }}">Last</a>
+        {% endifnotequal %}
+    </span>
+</div>
+
+{% endblock posts_content %}

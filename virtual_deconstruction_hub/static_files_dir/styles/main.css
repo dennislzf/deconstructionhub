@@ -1,0 +1,443 @@
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+}
+ 
+/***** Global *****/
+
+/** prevents "page-shifting" a few pixels sometimes due to overflow **/
+html {
+    overflow-y: scroll;
+}
+
+/* Body */
+	body {
+	background: #F5F4EF url('../images/paper-bg.jpg');
+		background-attachment: fixed;
+		color: #000305;
+		font-size: 87.5%; /* Base font size: 14px */
+		font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		line-height: 1.429;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+	}
+	
+/*** Banner Title, Slogan and Logo***/
+#header {
+    width: 800px;
+    overflow: hidden; /* add this to contain floated children */
+}
+#title_slogan {
+    width: 650px;
+    height:100px;
+    float:left; /* add title and slogan aligned to the left */
+}
+#banner_logo img{
+	padding: 10px 10px;
+    float: right; /* add logo and align to the right */
+   }
+ 
+/* Headings */
+h2 {font-size: 1.571em}	/* 22px */
+h3 {font-size: 1.429em}	/* 20px */
+h4 {font-size: 1.286em}	/* 18px */
+h5 {font-size: 1.143em}	/* 16px */
+h6 {font-size: 1em}	/* 14px */
+ 
+h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+}
+ 
+/* Anchors */
+a {outline: 0;}
+a img {border: 0px; text-decoration: none;}
+a:link, a:visited {
+	color: #000000;
+	padding: 0 1px;
+	text-decoration: underline;
+}
+a:hover, a:active {
+	background-color: #00dd68;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #333;
+}
+ 
+/* Paragraphs */
+p {margin-bottom: 1.143em;}
+* p:last-child {margin-bottom: 0;}
+ 
+strong, b {font-weight: bold;}
+em, i {font-style: italic;}
+ 
+/* Lists */
+ul {
+	list-style: none; /** removes bullets from the list **/
+	margin-left:auto;
+	margin-right:auto;
+}
+ 
+ol {
+	list-style: outside decimal;
+/** margin: 1em 0 1.5em 1.5em; **/
+}
+ 
+dl {margin: 0 0 1.5em 0;}
+dt {font-weight: bold;}
+dd {margin-left: 1.5em;}
+ 
+	
+/*	Header
+*****************/
+ 
+	/* Banner */
+	#banner h1 {font-size: 3.571em; line-height: .6;}
+	#banner h1 a:link, #banner h1 a:visited {
+		color: #000305;
+		display: block;
+		font-weight: bold;
+		margin: 0 0 0 0;
+		text-decoration: none;
+		width: 800px;
+	}
+	#banner h1 a:hover, #banner h1 a:active {
+		background: none;
+		color: #00dd68; /* #C74350; */
+		text-shadow: none;
+	}
+ 
+ 	/*** Slogan ***/
+	#banner h1 strong {
+		font-size: 0.36em;
+		font-weight: normal;
+		padding: 20px 0 0 40px;
+		display: block;
+		}
+		
+	/**** Search Bar ****/
+	
+	#header_search_form {
+		overflow: hidden;
+	}
+	
+	#search_text {
+		width:600px;
+	}
+	
+	#select {
+		width:115px;
+	}
+	
+	#search_button {
+		width:75px;
+	}
+	
+/**** Main Content Block ****/
+#content {
+	padding: 0;
+}
+
+	
+/***** Layout *****/
+.body {clear: both; margin-left: auto; margin-right: auto; width: 800px;}
+img.right figure.right {float: right; margin: 0 0 2em 2em;}
+img.left, figure.left {float: right; margin: 0 0 2em 2em;}
+
+/* Main Nav */
+	#banner nav {
+		background: #000305;
+		font-size: 1.143em;
+		height: 40px;
+		line-height: 30px;
+		margin: 0 auto 5px auto;
+		padding: 0;
+		text-align: center;
+		width: 800px;
+				
+		border-radius: 5px; 
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	#banner nav ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		text-align: center;
+		width: 800px;
+		}
+	#banner nav li {
+		display: inline;
+		margin: 0;
+		}
+	
+	#banner nav a:link, #banner nav a:visited {
+		color: #fff;
+		display: inline-block;
+		height: 30px;
+		padding: 5px 1.5em;
+		text-decoration: none;
+		
+	}
+	#banner nav a:hover, #banner nav a:active,
+	/** controls the home banner links (Home, Listings, etc) **/
+	#banner nav .active a:link, #banner nav .active a:visited {
+		background: #00dd68; /* #C74451; */
+		color: #fff;
+		text-shadow: none !important;
+	}
+	
+	
+	/** (NOT-COMPLETE) sign up form div **/
+	#signupform {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	}
+	
+	
+	
+/*** Home Page Featured Blog Post ***/
+#featured_blog {
+/** background: #fff; **/
+	margin-bottom: 2em;
+	overflow: visible;
+	padding: 20px;
+	width: 760px;
+ 
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+ /** set's the max container size for
+  * the preview image of the featured blog **/
+#featured_blog div {
+	float: right;
+	margin: 0.786em 2em 0 5em;
+	width: 200px;
+	height: 200px;
+}
+/**ensures that preview image is scaled properly to fit container
+ * 	(ie a really tall narrow image will be scaled to fit as will a wide short one) **/
+#featured_blog div img {float: right; max-height: 100%; max-width: 100%;}
+#featured_blog h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured_blog h3 {font-size: 1.429em; margin-bottom: .5em;}
+#featured_blog h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
+#featured_blog h3 a:hover, #featured h3 a:active {color: #fff;}
+
+.date {
+	text-align: right;
+}
+
+/***  Home Page - Recent Listings  ***/
+#featured_listing {
+/** background: #fff; **/
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px; 
+	width: 760px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#featured_listing div img {float: right; max-height: 180px; max-width: 100%;}
+#featured_listing h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured_listing h3 {font-size: 1.429em; margin-bottom: .5em;}
+#featured_listing h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
+#featured_listing h3 a:hover, #featured h3 a:active {color: #fff;}
+
+/** center the section titles **/
+#home_blog_title h2 {text-align:center;}
+#home_listings_title h2 {text-align:center;}
+
+
+
+/***  Error pages (404, 500, etc) ***/
+#error {
+	width: 60%;
+    margin: 50px auto;
+    text-align:center;
+}
+
+
+/**** Individual Posts****/
+#single_post p {
+	width: 760px;
+}
+
+#single_post {
+	/**background: #fff;**/ 
+	margin-bottom: 5px;
+	overflow: visible;
+	padding: 20px;
+	width: 760px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#single_post_content {
+	font-size: 110%; /* Base font size: 14px */
+}
+
+#single_post_photo img {
+	width:760px;
+}
+
+/**** Individual Listings****/
+#single_listing p {
+	width: 760px;
+} 
+
+#single_listing {
+	/** background: #fff; **/ 
+	margin-bottom: 5px;
+	overflow: visible;
+	padding: 20px;
+	width: 760px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+#single_listing_content {
+	font-size: 110%; 
+}
+
+#single_listing_photo img {
+	width:760px;
+}
+
+/**** Listings Index ****/
+#listings_index {
+	margin-bottom: 5px;
+	overflow: visible;
+	padding: 20px;
+}
+
+#listings_index p {
+	width: 760px;
+}
+
+/*** Account Styles ***/
+.accountDiv {
+    width:130px;
+    padding: 12px 0 12px 30px;
+    cursor:pointer;
+    text-align:left;
+}
+.accountDiv:hover{
+    background-color:#00dd68;
+}
+
+.accountLink {
+    color:#fff !important;
+    text-decoration:none !important;
+    padding: 0 0 0 0 !important;
+    background:none !important;
+}
+.accountLink:hover{
+    text-shadow:none !important;
+}
+
+/***** GENERAL: FORMATS ALL <pre> tags so that they
+ do not overflow their content containers ****/
+pre { 
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*** System Messages ***/
+#system_message {
+	text-align: center;
+	color: red;
+}
+
+#statistic_text_links {
+cursor:pointer;
+width: 300px;
+float:left;
+background:black;
+margin-top:40px;
+border-radius:25px;
+
+}
+
+#statistic_text_links label{
+color:white;
+}
+
+.itemsinlist {
+padding-top : 20px;
+height :40px;
+text-align:center;
+}
+.itemsinlist:hover{
+    background-color: rgb(0,221,104) !important;
+}
+
+#listedmost{
+background-color: #00dd68;
+}
+
+
+#surveycategoryrank{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:inline;
+}
+
+#successrate{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}
+#averagetransactiontime{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}
+#amountsellerbuyer{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}
+#categorytransactionamount{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}
+#sellercategoryrank{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}
+#buyercategoryrank{
+height:400px;
+width: 400px;
+float:right;
+margin-top:80px;
+display:none;
+}

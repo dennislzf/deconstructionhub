@@ -1,0 +1,30 @@
+{% extends "users/myaccount.html" %}
+
+{% block account_content %}
+
+    {% if listings %}
+
+        <ul>
+        {% for listing in listings %}
+            <li><b>{{ listing.title }}</b> {{listing.created}}<a style="margin-left:20px" href="/listings/{{listing.get_url}}">View</a><a style="margin-left:20px" href="/edit-verify?listing_id={{ listing.id }}&uuid={{ listing.uuid }}">Edit</a>{% if listing.verified == 0%}<b>Not Verified!</b>{% endif %}</li>
+        {% endfor %}
+        </ul>
+    
+    {% endif %}
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if listings.has_previous %}
+                <a href="?page={{ listings.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ listings.number }} of {{ listings.paginator.num_pages }}
+            </span>
+            {% if listings.has_next %}
+                <a href="?page={{ listings.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+    
+{% endblock account_content %}

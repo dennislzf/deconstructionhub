@@ -1,0 +1,21 @@
+{% extends "posts/posts_new.html" %}
+
+{% block window_title %}
+Add photos to your {{ post_type_title}}
+{% endblock window_title %}
+
+{% block posts_content %}
+
+<h1>Create a new post</h1>
+
+{# context for directing to a app method call ->  <form action="{% url 'listings:submit_new' listing.id %}" method="post"> #}
+
+<form id="new_post_form" action="{{ submit_action }}" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+{% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<input type="submit" value="Submit" />
+</form>
+
+{% endblock posts_content %}
